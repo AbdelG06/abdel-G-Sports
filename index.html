@@ -5,167 +5,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="abdel-G-Sports, une experience web sportive avec lecteur live et equipes NBA."
+      content="abdel-G-Sports, une experience web moderne pour football, basketball et F1."
     />
     <title>abdel-G-Sports</title>
-    <link rel="preconnect" href="https://sharkstreams.net" />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
     <header class="site-header" aria-label="Navigation principale">
-      <a class="brand" href="#live" aria-label="abdel-G-Sports accueil">
+      <a class="brand" href="./index.html" aria-label="abdel-G-Sports accueil">
         <span class="brand-mark">AG</span>
-        <img
-          class="header-nba-logo"
-          src="./National_Basketball_Association_logo.svg.png"
-          alt="Logo NBA"
-        />
         <span>abdel-G-Sports</span>
       </a>
       <nav class="nav-links" aria-label="Sections">
-        <a href="#live">Live</a>
-        <a href="#teams">Equipes</a>
+        <a href="./football.html">Football</a>
+        <a href="./basketball.html">Basketball</a>
+        <a href="./f1.html">F1</a>
       </nav>
     </header>
 
     <main>
-      <section class="hero" id="live">
+      <section class="hero" id="sports">
         <div class="hero-copy">
-          <p class="eyebrow">Live NBA</p>
-          <h1>abdel-G-Sports</h1>
+          <p class="eyebrow">Sports hub</p>
+          <h1>Choisis ton sport</h1>
           <p class="hero-text">
-            Regarde le match en direct et profite d'une page sport claire,
-            rapide 0 PUB et 0 BUG et tout cela Gratuitements.
+            Football, basketball et bientot F1 dans une navigation propre avec
+            une page pour chaque sport.
           </p>
-          <div class="hero-actions" aria-label="Actions rapides">
-            <a class="primary-action" href="#player">Regarder le live</a>
-            <a class="secondary-action" href="#teams">Voir les equipes</a>
-          </div>
         </div>
 
-        <div class="live-panel" id="player" aria-label="Lecteur video">
-          <section class="score-card" aria-label="Score live NBA" aria-live="polite">
-            <div class="score-header">
-              <img
-                src="./National_Basketball_Association_logo.svg.png"
-                alt="Logo NBA"
-              />
-              <span>NBA Finals 2026 - Game 2</span>
-            </div>
+        <div class="sport-grid" aria-label="Choix du sport">
+          <a class="sport-card football-card" href="./football.html">
+            <span class="sport-logo-box channel-badge">SPORT</span>
+            <span class="sport-card-copy">
+              <strong>Football</strong>
+              <small>Channel sport 1 a 5</small>
+            </span>
+          </a>
 
-            <div class="score-matchup">
-              <div class="score-team">
-                <img src="./logo%20spurs.png" alt="Logo San Antonio Spurs" />
-                <span class="score-team-name spurs-color">SAS</span>
-                <strong id="score-home">--</strong>
-              </div>
-
-              <div class="match-info">
-                <span class="status-indicator" aria-hidden="true"></span>
-                <span id="match-status">CONNEXION...</span>
-              </div>
-
-              <div class="score-team">
-                <img src="./New_York_Knicks_logo.svg" alt="Logo New York Knicks" />
-                <span class="score-team-name knicks-color">NYK</span>
-                <strong id="score-away">--</strong>
-              </div>
-            </div>
-
-            <div class="score-update" id="score-updated">
-              Mise a jour automatique toutes les 15s
-            </div>
-          </section>
-
-          <div class="player-topbar">
-            <span class="live-dot" aria-hidden="true"></span>
-            <span>Direct en cours</span>
-            <button class="reload-button" type="button" id="reloadPlayer">
-              Recharger
-            </button>
-          </div>
-          <div class="video-frame">
-            <iframe
-              id="streamFrame"
-              src="https://sharkstreams.net/player.php?channel=2834"
-              title="Lecteur video abdel-G-Sports"
-              allow="autoplay; fullscreen; picture-in-picture"
-              allowfullscreen
-              referrerpolicy="no-referrer"
-            ></iframe>
-          </div>
-          <div class="player-footer">
-            <span>Lecteur abdel-G-Sports</span>
-          </div>
+          <a class="sport-card basketball-card" href="./basketball.html">
+            <span class="sport-logo-box">
+              <img src="./National_Basketball_Association_logo.svg.png" alt="Logo NBA" />
+            </span>
+            <span class="sport-card-copy">
+              <strong>Basketball</strong>
+              <small>NBA match en direct</small>
+            </span>
+          </a>
         </div>
-      </section>
 
-      <section class="score-strip" aria-label="Infos rapides">
-        <article>
-          <span>Match</span>
-          <strong>NBA Live</strong>
-        </article>
-        <article>
-          <span>Ambiance</span>
-          <strong>Game Night</strong>
-        </article>
-        <article>
-          <span>Site</span>
-          <strong>abdel-G-Sports</strong>
-        </article>
-      </section>
-
-      <section class="teams-section" id="teams">
-        <div class="section-heading">
-          <p class="eyebrow">Selection</p>
-          <h2>Equipes a l'affiche</h2>
-        </div>
-        <div class="team-grid">
-          <article class="team-card spurs-card">
-            <img src="./logo%20spurs.png" alt="Logo San Antonio Spurs" />
-            <div>
-              <span>Western Conference</span>
-              <h3>San Antonio Spurs</h3>
-            </div>
-            <div class="team-card-score">
-              <strong>SAS</strong>
-              <span id="card-home-score">--</span>
-            </div>
-          </article>
-          <article class="team-card nba-card">
-            <img
-              src="./National_Basketball_Association_logo.svg.png"
-              alt="Logo NBA"
-            />
-            <div>
-              <span>Ligue</span>
-              <h3>National Basketball Association</h3>
-            </div>
-            <div class="team-card-score">
-              <strong>LIVE</strong>
-              <span id="card-live-status">NBA</span>
-            </div>
-          </article>
-          <article class="team-card knicks-card">
-            <img src="./New_York_Knicks_logo.svg" alt="Logo New York Knicks" />
-            <div>
-              <span>Eastern Conference</span>
-              <h3>New York Knicks</h3>
-            </div>
-            <div class="team-card-score">
-              <strong>NYK</strong>
-              <span id="card-away-score">--</span>
-            </div>
-          </article>
-        </div>
+        <a class="coming-soon" href="./f1.html" aria-label="F1 coming soon">
+          <img src="./F1.svg.webp" alt="Logo F1" />
+          <div>
+            <span>F1</span>
+            <strong>Coming soon</strong>
+          </div>
+        </a>
       </section>
     </main>
 
     <footer class="site-footer">
       <span>abdel-G-Sports</span>
-      <span>Basket live</span>
+      <span>Football + Basketball + F1 soon</span>
     </footer>
-
-    <script src="./script.js"></script>
   </body>
 </html>

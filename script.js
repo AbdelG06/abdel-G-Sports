@@ -12,8 +12,20 @@ const cardHomeScore = document.querySelector("#card-home-score");
 const cardAwayScore = document.querySelector("#card-away-score");
 const cardLiveStatus = document.querySelector("#card-live-status");
 const statusIndicator = document.querySelector(".status-indicator");
+const homeTeamName = document.querySelector("#home-team-name");
+const awayTeamName = document.querySelector("#away-team-name");
+const homeTeamNameCard = document.querySelector("#home-team-name-card");
+const awayTeamNameCard = document.querySelector("#away-team-name-card");
+const homeRecord = document.querySelector("#home-record");
+const awayRecord = document.querySelector("#away-record");
+const gamePeriod = document.querySelector("#game-period");
+const gameClock = document.querySelector("#game-clock");
 
 reloadButton?.addEventListener("click", () => {
+  if (!streamFrame) {
+    return;
+  }
+
   streamFrame.src = "";
   window.setTimeout(() => {
     streamFrame.src = streamUrl;
@@ -21,17 +33,48 @@ reloadButton?.addEventListener("click", () => {
 });
 
 function setScoreState({ home = "--", away = "--", status = "A VENIR", live = false }) {
-  scoreHome.textContent = home;
-  scoreAway.textContent = away;
-  matchStatus.textContent = status;
-  cardHomeScore.textContent = home;
-  cardAwayScore.textContent = away;
-  cardLiveStatus.textContent = live ? "LIVE" : "NBA";
-  statusIndicator.style.background = live ? "#39ff88" : "#f59f00";
-  scoreUpdated.textContent = `Derniere verification: ${new Date().toLocaleTimeString(
-    "fr-FR",
-    { hour: "2-digit", minute: "2-digit" },
-  )}`;
+  if (scoreHome) {
+    scoreHome.textContent = home;
+  }
+
+  if (scoreAway) {
+    scoreAway.textContent = away;
+  }
+
+  if (matchStatus) {
+    matchStatus.textContent = status;
+  }
+
+  if (cardHomeScore) {
+    cardHomeScore.textContent = home;
+  }
+
+  if (cardAwayScore) {
+    cardAwayScore.textContent = away;
+  }
+
+  if (cardLiveStatus) {
+    cardLiveStatus.textContent = live ? "LIVE" : "NBA";
+  }
+
+  if (statusIndicator) {
+    statusIndicator.style.background = live ? "#39ff88" : "#f59f00";
+  }
+
+  if (scoreUpdated) {
+    scoreUpdated.textContent = `Derniere verification: ${new Date().toLocaleTimeString("fr-FR", {
+      hour: "2-digit",
+      minute: "2-digit",
+    })}`;
+  }
+}
+
+function setTeamLabel(nodeList, value) {
+  nodeList.forEach((node) => {
+    if (node) {
+      node.textContent = value;
+    }
+  });
 }
 
 function getTeam(competitors, abbreviation) {
@@ -81,6 +124,24 @@ async function fetchLiveScore() {
     const knicks = getTeam(competitors, "NYK");
     const status = competition.status || game.status;
     const isLive = status?.type?.state === "in";
+    const spursName =
+      spurs?.team?.displayName || spurs?.team?.shortDisplayName || "San Antonio Spurs";
+    const knicksName =
+      knicks?.team?.displayName || knicks?.team?.shortDisplayName || "New York Knicks";
+    const spursRecord = spurs?.records?.[0]?.summary || spurs?.record?.summary || "--";
+    const knicksRecord = knicks?.records?.[0]?.summary || knicks?.record?.summary || "--";
+    const periodLabel =
+      status?.type?.state === "in"
+        ? `Q${status.period || 1}`
+        : status?.type?.shortDetail || status?.type?.detail || "NBA Live";
+    const clockLabel = status?.displayClock || status?.type?.shortDetail || "--:--";
+    const diff = Number(spurs?.score || 0) - Number(knicks?.score || 0);
+    const diffLabel =
+      spurs?.score && knicks?.score
+        ? diff === 0
+          ? "Tie"
+          : `${Math.abs(diff)} pts ${diff > 0 ? "SAS" : "NYK"}`
+        : "En attente";
 
     setScoreState({
       home: spurs?.score || "--",
@@ -88,12 +149,35 @@ async function fetchLiveScore() {
       status: getStatusLabel(status),
       live: isLive,
     });
+
+    setTeamLabel([homeTeamName, homeTeamNameCard], spursName);
+    setTeamLabel([awayTeamName, awayTeamNameCard], knicksName);
+
+    if (homeRecord) {
+      homeRecord.textContent = `Record: ${spursRecord}`;
+    }
+
+    if (awayRecord) {
+      awayRecord.textContent = `Record: ${knicksRecord}`;
+    }
+
+    if (gamePeriod) {
+      gamePeriod.textContent = periodLabel;
+    }
+
+    if (gameClock) {
+      gameClock.textContent = `${clockLabel} | ${diffLabel}`;
+    }
   } catch (error) {
     console.error("Erreur de recuperation du score:", error);
     setScoreState({ status: "HORS LIGNE" });
-    statusIndicator.style.background = "#ff3333";
+    if (statusIndicator) {
+      statusIndicator.style.background = "#ff3333";
+    }
   }
 }
 
-fetchLiveScore();
-window.setInterval(fetchLiveScore, 15000);
+if (scoreHome || scoreAway || matchStatus || scoreUpdated || cardHomeScore || cardAwayScore || cardLiveStatus) {
+  fetchLiveScore();
+  window.setInterval(fetchLiveScore, 15000);
+}
