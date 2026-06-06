@@ -15,6 +15,11 @@
     <header class="site-header" aria-label="Navigation principale">
       <a class="brand" href="#live" aria-label="abdel-G-Sports accueil">
         <span class="brand-mark">AG</span>
+        <img
+          class="header-nba-logo"
+          src="./National_Basketball_Association_logo.svg.png"
+          alt="Logo NBA"
+        />
         <span>abdel-G-Sports</span>
       </a>
       <nav class="nav-links" aria-label="Sections">
@@ -30,7 +35,7 @@
           <h1>abdel-G-Sports</h1>
           <p class="hero-text">
             Regarde le match en direct et profite d'une page sport claire,
-            rapide et pensee pour les fans de basket.
+            rapide 0 PUB et 0 BUG et tout cela Gratuitements.
           </p>
           <div class="hero-actions" aria-label="Actions rapides">
             <a class="primary-action" href="#player">Regarder le live</a>
@@ -39,6 +44,39 @@
         </div>
 
         <div class="live-panel" id="player" aria-label="Lecteur video">
+          <section class="score-card" aria-label="Score live NBA" aria-live="polite">
+            <div class="score-header">
+              <img
+                src="./National_Basketball_Association_logo.svg.png"
+                alt="Logo NBA"
+              />
+              <span>NBA Finals 2026 - Game 2</span>
+            </div>
+
+            <div class="score-matchup">
+              <div class="score-team">
+                <img src="./logo%20spurs.png" alt="Logo San Antonio Spurs" />
+                <span class="score-team-name spurs-color">SAS</span>
+                <strong id="score-home">--</strong>
+              </div>
+
+              <div class="match-info">
+                <span class="status-indicator" aria-hidden="true"></span>
+                <span id="match-status">CONNEXION...</span>
+              </div>
+
+              <div class="score-team">
+                <img src="./New_York_Knicks_logo.svg" alt="Logo New York Knicks" />
+                <span class="score-team-name knicks-color">NYK</span>
+                <strong id="score-away">--</strong>
+              </div>
+            </div>
+
+            <div class="score-update" id="score-updated">
+              Mise a jour automatique toutes les 15s
+            </div>
+          </section>
+
           <div class="player-topbar">
             <span class="live-dot" aria-hidden="true"></span>
             <span>Direct en cours</span>
@@ -89,6 +127,10 @@
               <span>Western Conference</span>
               <h3>San Antonio Spurs</h3>
             </div>
+            <div class="team-card-score">
+              <strong>SAS</strong>
+              <span id="card-home-score">--</span>
+            </div>
           </article>
           <article class="team-card nba-card">
             <img
@@ -99,12 +141,20 @@
               <span>Ligue</span>
               <h3>National Basketball Association</h3>
             </div>
+            <div class="team-card-score">
+              <strong>LIVE</strong>
+              <span id="card-live-status">NBA</span>
+            </div>
           </article>
           <article class="team-card knicks-card">
             <img src="./New_York_Knicks_logo.svg" alt="Logo New York Knicks" />
             <div>
               <span>Eastern Conference</span>
               <h3>New York Knicks</h3>
+            </div>
+            <div class="team-card-score">
+              <strong>NYK</strong>
+              <span id="card-away-score">--</span>
             </div>
           </article>
         </div>
