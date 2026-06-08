@@ -159,7 +159,7 @@ h2 {
 
 .sport-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
 }
 
@@ -226,6 +226,12 @@ h2 {
 .sport-logo-box img {
   width: min(82%, 230px);
   max-height: 168px;
+  object-fit: contain;
+}
+
+.fifa-logo {
+  width: min(78%, 240px);
+  max-height: 128px;
   object-fit: contain;
 }
 
@@ -473,6 +479,8 @@ h2 {
 .channel-page-shell {
   display: grid;
   gap: 18px;
+  width: min(100%, 940px);
+  margin-inline: auto;
 }
 
 .channel-title {
@@ -765,6 +773,16 @@ h2 {
   inset: 0;
   width: 100%;
   height: 100%;
+  border: 0;
+}
+
+.video-frame video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #000;
   border: 0;
 }
 

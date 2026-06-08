@@ -32,7 +32,7 @@
           </div>
           <img
             class="section-logo tall-logo"
-            src="./National_Basketball_Association_logo.svg.png"
+            src="./src/National_Basketball_Association_logo.svg.png"
             alt="Logo NBA"
           />
         </div>
@@ -40,13 +40,13 @@
         <div class="live-panel" id="player" aria-label="Lecteur video">
           <section class="score-card" aria-label="Score live NBA" aria-live="polite">
             <div class="score-header">
-              <img src="./National_Basketball_Association_logo.svg.png" alt="Logo NBA" />
-              <span>NBA Finals 2026 - Game 2</span>
+              <img src="./src/National_Basketball_Association_logo.svg.png" alt="Logo NBA" />
+              <span>NBA Finals 2026 - Game 3</span>
             </div>
 
             <div class="score-matchup">
               <div class="score-team">
-                <img src="./logo%20spurs.png" alt="Logo San Antonio Spurs" />
+                <img src="./src/logo%20spurs.png" alt="Logo San Antonio Spurs" />
                 <span class="score-team-name spurs-color basketball-team-name-home" id="home-team-name">
                   San Antonio Spurs
                 </span>
@@ -59,7 +59,7 @@
               </div>
 
               <div class="score-team">
-                <img src="./New_York_Knicks_logo.svg" alt="Logo New York Knicks" />
+                <img src="./src/New_York_Knicks_logo.svg" alt="Logo New York Knicks" />
                 <span class="score-team-name knicks-color basketball-team-name-away" id="away-team-name">
                   New York Knicks
                 </span>
@@ -74,7 +74,8 @@
 
           <div class="player-topbar">
             <span class="live-dot" aria-hidden="true"></span>
-            <span>Direct en cours</span>
+            <span>See u Next match</span>
+            <!-- <span>Direct en cours</span> -->
             <button class="reload-button" type="button" id="reloadPlayer">Recharger</button>
           </div>
           <div class="video-frame">
@@ -102,39 +103,39 @@
 
           <div class="team-grid">
             <article class="team-card spurs-card">
-              <img src="./logo%20spurs.png" alt="Logo San Antonio Spurs" />
+              <img src="./src/logo%20spurs.png" alt="Logo San Antonio Spurs" />
               <div>
                 <span>Home</span>
                 <h3 id="home-team-name-card">San Antonio Spurs</h3>
               </div>
               <div class="team-card-score">
-                <strong id="card-home-score">--</strong>
-                <span id="home-record">Record: --</span>
+                <strong id="card-home-score">0</strong>
+                <span id="home-record">Score: 0</span>
               </div>
             </article>
 
             <article class="team-card nba-card">
-              <img src="./National_Basketball_Association_logo.svg.png" alt="Logo NBA" />
+              <img src="./src/National_Basketball_Association_logo.svg.png" alt="Logo NBA" />
               <div>
                 <span>Status</span>
                 <h3 id="game-period">NBA Live</h3>
               </div>
               <div class="team-card-score">
                 <strong id="card-live-status">NBA</strong>
-                <span id="game-clock">--:--</span>
+                <span id="game-clock">01:30</span>
               </div>
             </article>
 
             <article class="team-card knicks-card">
-              <img src="./New_York_Knicks_logo.svg" alt="Logo New York Knicks" />
+              <img src="./src/New_York_Knicks_logo.svg" alt="Logo New York Knicks" />
               <div>
                 <span>Away</span>
                 <h3 id="away-team-name-card">New York Knicks</h3>
               </div>
               <div class="team-card-score">
-                <strong id="card-away-score">--</strong>
-                <span id="away-record">Record: --</span>
-              </div>
+                <strong id="card-away-score">2</strong>
+                <span id="away-record">Score: 02</span>
+              </div> 
             </article>
           </div>
         </section>
